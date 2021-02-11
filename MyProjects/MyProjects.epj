@@ -1,0 +1,5 @@
+Begin Project "MyProjects", "My DBPS Projects go here", VC_PROJECT=, AUXPROJPATH=
+DATASOURCE=
+DATABASE=
+
+End Project
