@@ -1,0 +1,6 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<schema-archive-results:SchemaArchiveVersionDetail xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jobNS="http://www.embarcadero.com/ChangeManager/5.0" xmlns:schema-archive-results="http://www.embarcadero.com/ChangeManager/5.0/Schema/Archive/Results">
+  <cacheIdentifier cacheName="Feb 07, 2021 10_51_00_081 PM" projectName="Change Management" jobName="Orders Archive" indexCacheName="Index Feb 07, 2021 10_51_00_081 PM"/>
+  <source xsi:type="jobNS:ChangeJobDatasourceItem" href="../../Orders%20Archive.saj#/0/@sourceItem"/>
+  <archiveJob href="../../Orders%20Archive.saj#/0"/>
+</schema-archive-results:SchemaArchiveVersionDetail>

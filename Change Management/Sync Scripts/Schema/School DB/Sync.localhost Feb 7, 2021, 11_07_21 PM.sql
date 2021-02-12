@@ -1,0 +1,1087 @@
+--------------------------------------------------------------------------------
+-- IDERA DB Change Manager Synchronization Script
+-- FILE                : Sync.localhost Feb 7, 2021, 11_07_21 PM
+-- DATE                : Feb 7, 2021, 11:07:21 PM
+-- 
+-- SOURCE DATA SOURCE  : 192.168.229.128
+-- TARGET DATA SOURCE  : localhost
+--------------------------------------------------------------------------------
+
+USE School
+go
+
+
+
+DROP USER dbo
+go
+
+
+
+USE CA
+go
+
+
+
+USE CA
+go
+
+
+EXEC sp_changedbowner N'sa'
+go
+
+
+USE master
+go
+
+
+
+USE Orders
+go
+
+
+
+USE Orders
+go
+
+
+EXEC sp_changedbowner N'sa'
+go
+
+
+USE master
+go
+
+
+
+USE PA
+go
+
+
+
+USE PA
+go
+
+
+EXEC sp_changedbowner N'sa'
+go
+
+
+USE master
+go
+
+
+
+USE PROD
+go
+
+
+
+CREATE DATABASE PROD 
+ON PRIMARY
+(
+    NAME='PROD',
+    FILENAME='/var/opt/mssql/data/PROD.mdf',
+    SIZE=8192KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+LOG ON
+(
+    NAME='PROD_log',
+    FILENAME='/var/opt/mssql/data/PROD_log.ldf',
+    SIZE=8192KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+COLLATE SQL_Latin1_General_CP1_CI_AS
+
+go
+
+EXEC sp_dbcmptlevel N'PROD',150
+
+go
+
+ALTER DATABASE PROD SET ANSI_NULL_DEFAULT OFF
+
+go
+
+ALTER DATABASE PROD SET ANSI_NULLS OFF
+
+go
+
+ALTER DATABASE PROD SET ANSI_PADDING OFF
+
+go
+
+ALTER DATABASE PROD SET ANSI_WARNINGS OFF
+
+go
+
+ALTER DATABASE PROD SET ARITHABORT OFF
+
+go
+
+ALTER DATABASE PROD SET AUTO_CREATE_STATISTICS ON
+
+go
+
+ALTER DATABASE PROD SET AUTO_UPDATE_STATISTICS ON
+
+go
+
+ALTER DATABASE PROD SET AUTO_CLOSE OFF
+
+go
+
+ALTER DATABASE PROD SET AUTO_SHRINK OFF
+
+go
+
+ALTER DATABASE PROD SET CONCAT_NULL_YIELDS_NULL OFF
+
+go
+
+ALTER DATABASE PROD SET CURSOR_CLOSE_ON_COMMIT OFF
+
+go
+
+EXEC sp_replicationdboption N'PROD','merge publish',false
+
+go
+
+ALTER DATABASE PROD SET NUMERIC_ROUNDABORT OFF
+
+go
+
+EXEC sp_replicationdboption N'PROD','publish',false
+
+go
+
+ALTER DATABASE PROD SET QUOTED_IDENTIFIER OFF
+
+go
+
+ALTER DATABASE PROD SET RECURSIVE_TRIGGERS OFF
+
+go
+
+EXEC sp_replicationdboption N'PROD','subscribe',false
+
+go
+
+ALTER DATABASE PROD SET TORN_PAGE_DETECTION OFF
+
+go
+
+ALTER DATABASE PROD SET DISABLE_BROKER
+
+go
+
+ALTER DATABASE PROD SET DATE_CORRELATION_OPTIMIZATION OFF
+
+go
+
+ALTER DATABASE PROD SET ALLOW_SNAPSHOT_ISOLATION OFF
+
+go
+
+ALTER DATABASE PROD SET READ_COMMITTED_SNAPSHOT OFF
+
+go
+
+ALTER DATABASE PROD SET PARAMETERIZATION SIMPLE
+
+go
+
+ALTER DATABASE PROD SET PAGE_VERIFY CHECKSUM
+
+go
+
+ALTER DATABASE PROD SET RECOVERY FULL
+
+go
+
+ALTER DATABASE PROD SET CURSOR_DEFAULT GLOBAL
+
+go
+
+ALTER DATABASE PROD SET READ_WRITE
+
+go
+
+ALTER DATABASE PROD SET MULTI_USER
+
+go
+
+IF DB_ID(N'PROD') IS NOT NULL
+    PRINT N'<<< CREATED DATABASE PROD >>>'
+ELSE
+    PRINT N'<<< FAILED CREATING DATABASE PROD >>>'
+
+go
+
+
+USE SA
+go
+
+
+
+USE SA
+go
+
+
+EXEC sp_changedbowner N'sa'
+go
+
+
+USE master
+go
+
+
+
+USE SQLdmRepository
+go
+
+
+
+CREATE DATABASE SQLdmRepository 
+ON PRIMARY
+(
+    NAME='SQLdmRepository',
+    FILENAME='/var/opt/mssql/data/SQLdmRepository.mdf',
+    SIZE=102400KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=32768KB
+)
+LOG ON
+(
+    NAME='SQLdmRepository_log',
+    FILENAME='/var/opt/mssql/data/SQLdmRepository_log.ldf',
+    SIZE=37888KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=32768KB
+)
+COLLATE SQL_Latin1_General_CP1_CS_AS
+
+go
+
+EXEC sp_dbcmptlevel N'SQLdmRepository',110
+
+go
+
+ALTER DATABASE SQLdmRepository SET ANSI_NULL_DEFAULT OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET ANSI_NULLS OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET ANSI_PADDING OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET ANSI_WARNINGS OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET ARITHABORT OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET AUTO_CREATE_STATISTICS ON
+
+go
+
+ALTER DATABASE SQLdmRepository SET AUTO_UPDATE_STATISTICS ON
+
+go
+
+ALTER DATABASE SQLdmRepository SET AUTO_CLOSE OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET AUTO_SHRINK OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET CONCAT_NULL_YIELDS_NULL OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET CURSOR_CLOSE_ON_COMMIT OFF
+
+go
+
+EXEC sp_replicationdboption N'SQLdmRepository','merge publish',false
+
+go
+
+ALTER DATABASE SQLdmRepository SET NUMERIC_ROUNDABORT OFF
+
+go
+
+EXEC sp_replicationdboption N'SQLdmRepository','publish',false
+
+go
+
+ALTER DATABASE SQLdmRepository SET QUOTED_IDENTIFIER OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET RECURSIVE_TRIGGERS OFF
+
+go
+
+EXEC sp_replicationdboption N'SQLdmRepository','subscribe',false
+
+go
+
+ALTER DATABASE SQLdmRepository SET TORN_PAGE_DETECTION OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET ENABLE_BROKER
+
+go
+
+ALTER DATABASE SQLdmRepository SET DATE_CORRELATION_OPTIMIZATION OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET ALLOW_SNAPSHOT_ISOLATION OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET READ_COMMITTED_SNAPSHOT OFF
+
+go
+
+ALTER DATABASE SQLdmRepository SET PARAMETERIZATION SIMPLE
+
+go
+
+ALTER DATABASE SQLdmRepository SET PAGE_VERIFY CHECKSUM
+
+go
+
+ALTER DATABASE SQLdmRepository SET RECOVERY SIMPLE
+
+go
+
+ALTER DATABASE SQLdmRepository SET CURSOR_DEFAULT GLOBAL
+
+go
+
+ALTER DATABASE SQLdmRepository SET READ_WRITE
+
+go
+
+ALTER DATABASE SQLdmRepository SET MULTI_USER
+
+go
+
+IF DB_ID(N'SQLdmRepository') IS NOT NULL
+    PRINT N'<<< CREATED DATABASE SQLdmRepository >>>'
+ELSE
+    PRINT N'<<< FAILED CREATING DATABASE SQLdmRepository >>>'
+
+go
+
+
+USE School
+go
+
+
+
+USE School
+go
+
+
+EXEC sp_changedbowner N'sa'
+go
+
+
+USE master
+go
+
+
+
+USE TestDB
+go
+
+
+
+CREATE DATABASE TestDB 
+ON PRIMARY
+(
+    NAME='TestDB',
+    FILENAME='/var/opt/mssql/data/TestDB.mdf',
+    SIZE=8192KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+LOG ON
+(
+    NAME='TestDB_log',
+    FILENAME='/var/opt/mssql/data/TestDB_log.ldf',
+    SIZE=8192KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+COLLATE SQL_Latin1_General_CP1_CI_AS
+
+go
+
+EXEC sp_dbcmptlevel N'TestDB',150
+
+go
+
+ALTER DATABASE TestDB SET ANSI_NULL_DEFAULT OFF
+
+go
+
+ALTER DATABASE TestDB SET ANSI_NULLS OFF
+
+go
+
+ALTER DATABASE TestDB SET ANSI_PADDING OFF
+
+go
+
+ALTER DATABASE TestDB SET ANSI_WARNINGS OFF
+
+go
+
+ALTER DATABASE TestDB SET ARITHABORT OFF
+
+go
+
+ALTER DATABASE TestDB SET AUTO_CREATE_STATISTICS ON
+
+go
+
+ALTER DATABASE TestDB SET AUTO_UPDATE_STATISTICS ON
+
+go
+
+ALTER DATABASE TestDB SET AUTO_CLOSE OFF
+
+go
+
+ALTER DATABASE TestDB SET AUTO_SHRINK OFF
+
+go
+
+ALTER DATABASE TestDB SET CONCAT_NULL_YIELDS_NULL OFF
+
+go
+
+ALTER DATABASE TestDB SET CURSOR_CLOSE_ON_COMMIT OFF
+
+go
+
+EXEC sp_replicationdboption N'TestDB','merge publish',false
+
+go
+
+ALTER DATABASE TestDB SET NUMERIC_ROUNDABORT OFF
+
+go
+
+EXEC sp_replicationdboption N'TestDB','publish',false
+
+go
+
+ALTER DATABASE TestDB SET QUOTED_IDENTIFIER OFF
+
+go
+
+ALTER DATABASE TestDB SET RECURSIVE_TRIGGERS OFF
+
+go
+
+EXEC sp_replicationdboption N'TestDB','subscribe',false
+
+go
+
+ALTER DATABASE TestDB SET TORN_PAGE_DETECTION OFF
+
+go
+
+ALTER DATABASE TestDB SET ENABLE_BROKER
+
+go
+
+ALTER DATABASE TestDB SET DATE_CORRELATION_OPTIMIZATION OFF
+
+go
+
+ALTER DATABASE TestDB SET ALLOW_SNAPSHOT_ISOLATION OFF
+
+go
+
+ALTER DATABASE TestDB SET READ_COMMITTED_SNAPSHOT OFF
+
+go
+
+ALTER DATABASE TestDB SET PARAMETERIZATION SIMPLE
+
+go
+
+ALTER DATABASE TestDB SET PAGE_VERIFY CHECKSUM
+
+go
+
+ALTER DATABASE TestDB SET RECOVERY FULL
+
+go
+
+ALTER DATABASE TestDB SET CURSOR_DEFAULT GLOBAL
+
+go
+
+ALTER DATABASE TestDB SET READ_WRITE
+
+go
+
+ALTER DATABASE TestDB SET MULTI_USER
+
+go
+
+IF DB_ID(N'TestDB') IS NOT NULL
+    PRINT N'<<< CREATED DATABASE TestDB >>>'
+ELSE
+    PRINT N'<<< FAILED CREATING DATABASE TestDB >>>'
+
+go
+
+
+USE WideWorldImporters
+go
+
+
+
+USE WideWorldImporters
+go
+
+
+EXEC sp_changedbowner N'sa'
+go
+
+
+USE master
+go
+
+
+ALTER DATABASE WideWorldImporters MODIFY FILE
+(
+    NAME='WWI_InMemory_Data_1',
+    SIZE=142512KB
+)
+go
+
+
+
+USE WslTutorial
+go
+
+
+
+CREATE DATABASE WslTutorial 
+ON PRIMARY
+(
+    NAME='WslTutorial',
+    FILENAME='/var/opt/mssql/data/WslTutorial.mdf',
+    SIZE=8192KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+LOG ON
+(
+    NAME='WslTutorial_log',
+    FILENAME='/var/opt/mssql/data/WslTutorial_log.ldf',
+    SIZE=8192KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+COLLATE SQL_Latin1_General_CP1_CI_AS
+
+go
+
+EXEC sp_dbcmptlevel N'WslTutorial',150
+
+go
+
+ALTER DATABASE WslTutorial SET ANSI_NULL_DEFAULT OFF
+
+go
+
+ALTER DATABASE WslTutorial SET ANSI_NULLS OFF
+
+go
+
+ALTER DATABASE WslTutorial SET ANSI_PADDING OFF
+
+go
+
+ALTER DATABASE WslTutorial SET ANSI_WARNINGS OFF
+
+go
+
+ALTER DATABASE WslTutorial SET ARITHABORT OFF
+
+go
+
+ALTER DATABASE WslTutorial SET AUTO_CREATE_STATISTICS ON
+
+go
+
+ALTER DATABASE WslTutorial SET AUTO_UPDATE_STATISTICS ON
+
+go
+
+ALTER DATABASE WslTutorial SET AUTO_CLOSE OFF
+
+go
+
+ALTER DATABASE WslTutorial SET AUTO_SHRINK OFF
+
+go
+
+ALTER DATABASE WslTutorial SET CONCAT_NULL_YIELDS_NULL OFF
+
+go
+
+ALTER DATABASE WslTutorial SET CURSOR_CLOSE_ON_COMMIT OFF
+
+go
+
+EXEC sp_replicationdboption N'WslTutorial','merge publish',false
+
+go
+
+ALTER DATABASE WslTutorial SET NUMERIC_ROUNDABORT OFF
+
+go
+
+EXEC sp_replicationdboption N'WslTutorial','publish',false
+
+go
+
+ALTER DATABASE WslTutorial SET QUOTED_IDENTIFIER OFF
+
+go
+
+ALTER DATABASE WslTutorial SET RECURSIVE_TRIGGERS OFF
+
+go
+
+EXEC sp_replicationdboption N'WslTutorial','subscribe',false
+
+go
+
+ALTER DATABASE WslTutorial SET TORN_PAGE_DETECTION OFF
+
+go
+
+ALTER DATABASE WslTutorial SET ENABLE_BROKER
+
+go
+
+ALTER DATABASE WslTutorial SET DATE_CORRELATION_OPTIMIZATION OFF
+
+go
+
+ALTER DATABASE WslTutorial SET ALLOW_SNAPSHOT_ISOLATION OFF
+
+go
+
+ALTER DATABASE WslTutorial SET READ_COMMITTED_SNAPSHOT OFF
+
+go
+
+ALTER DATABASE WslTutorial SET PARAMETERIZATION SIMPLE
+
+go
+
+ALTER DATABASE WslTutorial SET PAGE_VERIFY CHECKSUM
+
+go
+
+ALTER DATABASE WslTutorial SET RECOVERY FULL
+
+go
+
+ALTER DATABASE WslTutorial SET CURSOR_DEFAULT GLOBAL
+
+go
+
+ALTER DATABASE WslTutorial SET READ_WRITE
+
+go
+
+ALTER DATABASE WslTutorial SET MULTI_USER
+
+go
+
+IF DB_ID(N'WslTutorial') IS NOT NULL
+    PRINT N'<<< CREATED DATABASE WslTutorial >>>'
+ELSE
+    PRINT N'<<< FAILED CREATING DATABASE WslTutorial >>>'
+
+go
+
+
+USE WslWarehouse
+go
+
+
+
+CREATE DATABASE WslWarehouse 
+ON PRIMARY
+(
+    NAME='WslWarehouse',
+    FILENAME='/var/opt/mssql/data/WslWarehouse.mdf',
+    SIZE=73728KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+LOG ON
+(
+    NAME='WslWarehouse_log',
+    FILENAME='/var/opt/mssql/data/WslWarehouse_log.ldf',
+    SIZE=73728KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+COLLATE SQL_Latin1_General_CP1_CI_AS
+
+go
+
+EXEC sp_dbcmptlevel N'WslWarehouse',150
+
+go
+
+ALTER DATABASE WslWarehouse SET ANSI_NULL_DEFAULT OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET ANSI_NULLS OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET ANSI_PADDING OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET ANSI_WARNINGS OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET ARITHABORT OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET AUTO_CREATE_STATISTICS ON
+
+go
+
+ALTER DATABASE WslWarehouse SET AUTO_UPDATE_STATISTICS ON
+
+go
+
+ALTER DATABASE WslWarehouse SET AUTO_CLOSE OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET AUTO_SHRINK OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET CONCAT_NULL_YIELDS_NULL OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET CURSOR_CLOSE_ON_COMMIT OFF
+
+go
+
+EXEC sp_replicationdboption N'WslWarehouse','merge publish',false
+
+go
+
+ALTER DATABASE WslWarehouse SET NUMERIC_ROUNDABORT OFF
+
+go
+
+EXEC sp_replicationdboption N'WslWarehouse','publish',false
+
+go
+
+ALTER DATABASE WslWarehouse SET QUOTED_IDENTIFIER OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET RECURSIVE_TRIGGERS OFF
+
+go
+
+EXEC sp_replicationdboption N'WslWarehouse','subscribe',false
+
+go
+
+ALTER DATABASE WslWarehouse SET TORN_PAGE_DETECTION OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET ENABLE_BROKER
+
+go
+
+ALTER DATABASE WslWarehouse SET DATE_CORRELATION_OPTIMIZATION OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET ALLOW_SNAPSHOT_ISOLATION OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET READ_COMMITTED_SNAPSHOT OFF
+
+go
+
+ALTER DATABASE WslWarehouse SET PARAMETERIZATION SIMPLE
+
+go
+
+ALTER DATABASE WslWarehouse SET PAGE_VERIFY CHECKSUM
+
+go
+
+ALTER DATABASE WslWarehouse SET RECOVERY FULL
+
+go
+
+ALTER DATABASE WslWarehouse SET CURSOR_DEFAULT GLOBAL
+
+go
+
+ALTER DATABASE WslWarehouse SET READ_WRITE
+
+go
+
+ALTER DATABASE WslWarehouse SET MULTI_USER
+
+go
+
+IF DB_ID(N'WslWarehouse') IS NOT NULL
+    PRINT N'<<< CREATED DATABASE WslWarehouse >>>'
+ELSE
+    PRINT N'<<< FAILED CREATING DATABASE WslWarehouse >>>'
+
+go
+
+
+USE master
+go
+
+
+
+ALTER DATABASE master MODIFY FILE
+(
+    NAME='master',
+    SIZE=8192KB
+)
+go
+
+
+ALTER DATABASE master MODIFY FILE
+(
+    NAME='mastlog',
+    SIZE=2048KB
+)
+go
+
+
+
+USE msdb
+go
+
+
+
+ALTER DATABASE msdb MODIFY FILE
+(
+    NAME='MSDBData',
+    SIZE=15168KB
+)
+go
+
+
+ALTER DATABASE msdb MODIFY FILE
+(
+    NAME='MSDBLog',
+    SIZE=1024KB
+)
+go
+
+
+
+USE tempdb
+go
+
+
+
+ALTER DATABASE tempdb MODIFY FILE
+(
+    NAME='tempdev',
+    SIZE=73728KB
+)
+go
+
+
+ALTER DATABASE tempdb ADD FILE
+(
+    NAME='tempdev2',
+    FILENAME='C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA/tempdb2.ndf',
+    SIZE=73728KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+go
+
+
+ALTER DATABASE tempdb ADD FILE
+(
+    NAME='tempdev3',
+    FILENAME='C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA/tempdb3.ndf',
+    SIZE=73728KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+go
+
+
+ALTER DATABASE tempdb ADD FILE
+(
+    NAME='tempdev4',
+    FILENAME='C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA/tempdb4.ndf',
+    SIZE=73728KB,
+    MAXSIZE=UNLIMITED,
+    FILEGROWTH=65536KB
+)
+go
+
+
+ALTER DATABASE tempdb REMOVE FILE temp2
+go
+
+
+ALTER DATABASE tempdb REMOVE FILE temp3
+go
+
+
+ALTER DATABASE tempdb REMOVE FILE temp4
+go
+
+
+ALTER DATABASE tempdb REMOVE FILE temp5
+go
+
+
+ALTER DATABASE tempdb REMOVE FILE temp6
+go
+
+
+ALTER DATABASE tempdb REMOVE FILE temp7
+go
+
+
+ALTER DATABASE tempdb REMOVE FILE temp8
+go
+
+
+ALTER DATABASE tempdb MODIFY FILE
+(
+    NAME='templog',
+    SIZE=73728KB
+)
+go
+
+
+
+USE master
+go
+
+
+
+ALTER LOGIN [##MS_PolicyEventProcessingLogin##] WITH PASSWORD = '020079FE70791DFB57016C805B621064B6A99BAAAA63A5159B595E793053189335FDE29C57EDEF8493D8C801EC7AF0E7B2C1E348C949AEA05A9AE9CC7F75C25F2F5486381BAB'
+go
+
+
+ALTER LOGIN [##MS_PolicyTsqlExecutionLogin##] WITH PASSWORD = '02000AE46B0A1595C8B14CBDE7163CE971EBBF2CD2101CF2DD844464C78D136B7F7925506BBA84EF53D4309C7087C0233DF545BB4970733594E0CDD22ADFA2A503F5A615C652'
+go
+
+
+CREATE LOGIN [BUILTIN\Administrators] FROM WINDOWS
+WITH DEFAULT_DATABASE = master,
+    DEFAULT_LANGUAGE = us_english
+
+go
+
+EXEC sp_addsrvrolemember N'BUILTIN\Administrators', 'sysadmin'
+
+go
+
+CREATE LOGIN [NT AUTHORITY\NETWORK SERVICE] FROM WINDOWS
+WITH DEFAULT_DATABASE = master,
+    DEFAULT_LANGUAGE = us_english
+
+go
+
+EXEC sp_addsrvrolemember N'NT AUTHORITY\NETWORK SERVICE', 'sysadmin'
+
+go
+
+ALTER LOGIN [NT AUTHORITY\NETWORK SERVICE] ENABLE
+
+go
+
+ALTER LOGIN sa WITH PASSWORD = '02009042E5C1A5E9265CFA8EBADE6723431A505C31953F228EB34461C2738D5920B2C6753CDC79C3754D267D264D3EBFD4796C84087D88B3D588127D807C23A1FCDDB8EAD2B0'
+go
+
+
+ALTER LOGIN sa ENABLE
+go
+
+
+EXEC sp_addserver @server=N'dbvm', @local='local', @duplicate_ok=NULL
+
+go
+
+EXEC sp_serveroption N'dbvm', 'rpc out', true
+
+go
+
+IF EXISTS (SELECT * FROM master.dbo.sysservers WHERE srvname=N'dbvm')
+    PRINT N'<<< CREATED REMOTE SERVER dbvm >>>'
+ELSE
+    PRINT N'<<< FAILED CREATING REMOTE SERVER dbvm >>>'
+
+go
+
+
+USE School
+go
+
+
+
+CREATE USER dbo FOR LOGIN sa
+	WITH DEFAULT_SCHEMA = dbo
+go
+
+
+EXEC sp_addrolemember N'db_owner', N'dbo'
+go
+
+

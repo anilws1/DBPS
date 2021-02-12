@@ -1,0 +1,47 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:config-archive="http://www.embarcadero.com/ChangeManager/5.0/Config/Archive" xmlns:jobNS="http://www.embarcadero.com/ChangeManager/5.0" xmlns:options="http://www.embarcadero.com/ChangeManager/5.0/options">
+  <config-archive:ConfigurationArchiveJob jobType="CONFIG_ARCHIVE" name="SQL Server on Windows Archive" creationDate="2021-02-12T13:54:35.785-0600" modifiedDate="2021-02-12T13:54:55.139-0600" runDate="2021-02-12T13:54:53.011-0600">
+    <sourceItem xsi:type="jobNS:ChangeJobDatasourceItem" uniqueIdentifier="5854784e:1777eabde03:-5313"/>
+    <notificationDataMap key="com.embarcadero.change.notifications.filesystem">
+      <value reportTypeString="None" runForString="Both" notifyOnString="Both">
+        <eNotificationProperties key="file.log" value="C:\Users\anilm\DB Change Manager Results\$Job_Name\$Date_Time"/>
+        <eNotificationProperties key="file.report" value="C:\Users\anilm\DB Change Manager Results\$Job_Name\$Date_Time"/>
+        <eNotificationProperties key="file.ddl" value="C:\Users\anilm\DB Change Manager Results\$Job_Name\$Date_Time"/>
+        <notificationThresholds>pass</notificationThresholds>
+        <notificationThresholds>fail</notificationThresholds>
+        <notificationThresholds>warn</notificationThresholds>
+      </value>
+    </notificationDataMap>
+    <notificationDataMap key="com.embarcadero.change.notifications.systemtray">
+      <value reportTypeString="None" runForString="Both" notifyOnString="Both" includeLogs="true">
+        <notificationThresholds>pass</notificationThresholds>
+        <notificationThresholds>warn</notificationThresholds>
+        <notificationThresholds>fail</notificationThresholds>
+      </value>
+    </notificationDataMap>
+    <results xsi:type="config-archive:ConfigurationArchiveJobVersion" ChangeJobResultDetail="/1" versionNumber="-1" configArchiveJob="/0"/>
+    <results xsi:type="config-archive:ConfigurationArchiveJobVersion" ChangeJobResultDetail="/2" versionNumber="-2" configArchiveJob="/0"/>
+    <results xsi:type="config-archive:ConfigurationArchiveJobVersion" ChangeJobResultDetail="/3" versionNumber="-3" configArchiveJob="/0"/>
+    <results xsi:type="config-archive:ConfigurationArchiveJobVersion" runDate="2021-02-12T13:54:53.160-0600" runElapsedTime="150" hostName="DESKTOP-7117R8K" versionNumber="1" configArchiveJob="/0" configurationPropertyArchiveSize="112">
+      <ChangeJobResultDetail xsi:type="config-archive:ConfigurationArchiveJobVersionDetail" href=".results/SQL%20Server%20on%20Windows%20Archive/Version1.car#/"/>
+    </results>
+    <optionsModel>
+      <options>
+        <categories name="CONFIG_ARCHIVE_DDL_EXTRACT_CATEGORY_NAME" displayName="DDL Extract Options">
+          <options xsi:type="jobNS:GenerateDDLOption" name="GenerateDDLOption" value="ACED0005737200116A6176612E6C616E672E426F6F6C65616ECD207280D59CFAEE0200015A000576616C7565787000"/>
+        </categories>
+        <categories name="AUTOMATIC_PURGE_CATEGORY_NAME" displayName="Automatic Purge Options">
+          <options xsi:type="options:AutomaticPurgeOption" name="AUTOMATIC_PURGE_OPTION_NAME">
+            <possibleChoices name="Days" value=""/>
+            <possibleChoices name="Versions" value=""/>
+            <possibleChoices name="MB" value=""/>
+          </options>
+        </categories>
+      </options>
+    </optionsModel>
+    <refinementTemplate/>
+  </config-archive:ConfigurationArchiveJob>
+  <config-archive:ConfigurationArchiveJobVersionDetail/>
+  <config-archive:ConfigurationArchiveJobVersionDetail/>
+  <config-archive:ConfigurationArchiveJobVersionDetail/>
+</xmi:XMI>
