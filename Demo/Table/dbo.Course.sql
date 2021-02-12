@@ -3,6 +3,7 @@
 -- PRIMARY OBJECT     : dbo.Course (Table)
 -- CREATED DATE       : 02/12/2021 13:50:03.616
 -- SOURCE             : Reverse-Engineered from SQL Server on Windows (SQLServer)
+-- Author             : Anil Mahadev
 -- --------------------------------------------------------------------------------
 CREATE TABLE dbo.Course
 (
