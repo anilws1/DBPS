@@ -20,3 +20,5 @@ IF OBJECT_ID(N'dbo.Course') IS NOT NULL
 ELSE
     PRINT N'<<< FAILED CREATING TABLE dbo.Course >>>'
 go
+
+--Made a change
