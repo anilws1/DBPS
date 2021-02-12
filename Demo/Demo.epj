@@ -1,0 +1,149 @@
+Begin Project "Demo", "Reversed Engineered from SQL Server on Windows.School", VC_PROJECT=, AUXPROJPATH=
+DATASOURCE=SQL Server on Windows
+DATABASE=School
+
+Begin SubProject "Table", "", PATH=.\Table
+
+Begin File "dbo.Course.sql"
+PATH=.\Table\dbo.Course.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=0
+OBJECTTYPE=36
+End File
+
+Begin File "dbo.CourseInstructor.sql"
+PATH=.\Table\dbo.CourseInstructor.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=1
+OBJECTTYPE=36
+End File
+
+Begin File "dbo.Department.sql"
+PATH=.\Table\dbo.Department.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=2
+OBJECTTYPE=36
+End File
+
+Begin File "dbo.OfficeAssignment.sql"
+PATH=.\Table\dbo.OfficeAssignment.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=3
+OBJECTTYPE=36
+End File
+
+Begin File "dbo.OnlineCourse.sql"
+PATH=.\Table\dbo.OnlineCourse.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=4
+OBJECTTYPE=36
+End File
+
+Begin File "dbo.OnsiteCourse.sql"
+PATH=.\Table\dbo.OnsiteCourse.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=5
+OBJECTTYPE=36
+End File
+
+Begin File "dbo.Person.sql"
+PATH=.\Table\dbo.Person.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=6
+OBJECTTYPE=36
+End File
+
+Begin File "dbo.StudentGrade.sql"
+PATH=.\Table\dbo.StudentGrade.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=7
+OBJECTTYPE=36
+End File
+
+Begin File "dbo.sysdiagrams.sql"
+PATH=.\Table\dbo.sysdiagrams.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=8
+OBJECTTYPE=36
+End File
+
+End SubProject
+
+Begin SubProject "ForeignKey", "", PATH=.\ForeignKey
+
+Begin File "dbo.FK_Course_Department.sql"
+PATH=.\ForeignKey\dbo.FK_Course_Department.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=9
+OBJECTTYPE=51
+End File
+
+Begin File "dbo.FK_CourseInstructor_Course.sql"
+PATH=.\ForeignKey\dbo.FK_CourseInstructor_Course.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=10
+OBJECTTYPE=51
+End File
+
+Begin File "dbo.FK_CourseInstructor_Person.sql"
+PATH=.\ForeignKey\dbo.FK_CourseInstructor_Person.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=11
+OBJECTTYPE=51
+End File
+
+Begin File "dbo.FK_OfficeAssignment_Person.sql"
+PATH=.\ForeignKey\dbo.FK_OfficeAssignment_Person.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=12
+OBJECTTYPE=51
+End File
+
+Begin File "dbo.FK_OnlineCourse_Course.sql"
+PATH=.\ForeignKey\dbo.FK_OnlineCourse_Course.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=13
+OBJECTTYPE=51
+End File
+
+Begin File "dbo.FK_OnsiteCourse_Course.sql"
+PATH=.\ForeignKey\dbo.FK_OnsiteCourse_Course.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=14
+OBJECTTYPE=51
+End File
+
+Begin File "dbo.FK_StudentGrade_Course.sql"
+PATH=.\ForeignKey\dbo.FK_StudentGrade_Course.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=15
+OBJECTTYPE=51
+End File
+
+Begin File "dbo.FK_StudentGrade_Student.sql"
+PATH=.\ForeignKey\dbo.FK_StudentGrade_Student.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=16
+OBJECTTYPE=51
+End File
+
+End SubProject
+
+End Project
