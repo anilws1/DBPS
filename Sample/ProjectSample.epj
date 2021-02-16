@@ -1,0 +1,45 @@
+Begin Project "ProjectSample", "", VC_PROJECT=, AUXPROJPATH=
+DATASOURCE=
+DATABASE=
+
+Begin File "emp.sql"
+PATH=.\emp.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=-1
+OBJECTTYPE=-1
+End File
+
+Begin File "EMPDEPT_Sample.sql"
+PATH=.\EMPDEPT_Sample.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=-1
+OBJECTTYPE=-1
+End File
+
+Begin File "GetDBInfo.sql"
+PATH=.\GetDBInfo.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=-1
+OBJECTTYPE=-1
+End File
+
+Begin File "OracleLoopingScript.sql"
+PATH=.\OracleLoopingScript.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=-1
+OBJECTTYPE=-1
+End File
+
+Begin File "tax.sql"
+PATH=.\tax.sql
+DESCRIPTION=
+INCLUDE=1
+BUILDINDEX=-1
+OBJECTTYPE=-1
+End File
+
+End Project
